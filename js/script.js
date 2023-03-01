@@ -29,13 +29,16 @@ const render = function () {
         }
 
         li.querySelector('.todo-complete').addEventListener('click', function () {
-            item.completed = !item.completed
+            item.completed = !item.completed;
             render()
-        })
+        });
 
-
-    })
-
+        li.querySelector('.todo-remove').addEventListener('click', function () {
+            const index = toDoData.indexOf(item);
+            toDoData.splice(index, 1);
+            li.remove();
+        });
+    });
 }
 
 todoControl.addEventListener('submit', function (event) {
