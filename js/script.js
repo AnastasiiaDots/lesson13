@@ -11,7 +11,7 @@ const render = function () {
     todoList.innerHTML = '';
     todoCompleted.innerHTML = '';
 
-    toDoData.forEach(function (item) {
+    toDoData.forEach(function (item, index) {
         const li = document.createElement('li');
 
         li.classList.add('todo-item');
@@ -33,11 +33,11 @@ const render = function () {
 
         li.querySelector('.todo-complete').addEventListener('click', function () {
             item.completed = !item.completed;
+            saveToLocalStorage();
             render();
         });
 
         li.querySelector('.todo-remove').addEventListener('click', function () {
-            const index = toDoData.indexOf(item);
             toDoData.splice(index, 1);
             li.remove();
             saveToLocalStorage();
